@@ -22,6 +22,22 @@ enum class spu_block_size_type
 	giga,
 };
 
+enum class spu_instruction_accuracy
+{
+	Default,
+	approximate,
+	accurate,
+};
+
+enum class lib_loading_type
+{
+	manual,
+	hybrid,
+	liblv2only,
+	liblv2both,
+	liblv2list,
+};
+
 enum class sleep_timers_accuracy_level
 {
 	_as_host,

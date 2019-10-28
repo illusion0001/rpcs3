@@ -1801,11 +1801,31 @@ settings_dialog::settings_dialog(std::shared_ptr<gui_settings> gui_settings, std
 	SubscribeTooltip(ui->ppuLlvmJavaModeHandling, tooltips.settings.ppu_llvm_java_mode_handling);
 
 	// Comboboxes
-
 	m_emu_settings->EnhanceComboBox(ui->combo_accurate_ppu_128, emu_settings_type::AccuratePPU128Loop, true);
 	SubscribeTooltip(ui->gb_accurate_ppu_128, tooltips.settings.accurate_ppu_128_loop);
 	ui->combo_accurate_ppu_128->setItemText(ui->combo_accurate_ppu_128->findData(-1), tr("Always Enabled", "Accurate PPU 128 Reservations"));
 	ui->combo_accurate_ppu_128->setItemText(ui->combo_accurate_ppu_128->findData(0), tr("Disabled", "Accurate PPU 128 Reservations"));
+	
+	// Comboboxes: spu instructions accuracy
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFCGT, emu_settings_type::SPU_FCGT_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFCMGT, emu_settings_type::SPU_FCMGT_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFM, emu_settings_type::SPU_FM_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFNMS, emu_settings_type::SPU_FNMS_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFMA, emu_settings_type::SPU_FMA_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFMS, emu_settings_type::SPU_FMS_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFREST, emu_settings_type::SPU_FREST_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFRSQEST, emu_settings_type::SPU_FRSQEST_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFI, emu_settings_type::SPU_FI_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFA, emu_settings_type::SPU_FA_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFS, emu_settings_type::SPU_FS_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFESD, emu_settings_type::SPU_FESD_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFRDS, emu_settings_type::SPU_FRDS_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFCEQ, emu_settings_type::SPU_FCEQ_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyFCMEQ, emu_settings_type::SPU_FCMEQ_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyCFLTS, emu_settings_type::SPU_CFLTS_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyCFLTU, emu_settings_type::SPU_CFLTU_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyCSFLT, emu_settings_type::SPU_CSFLT_Accuracy);
+	m_emu_settings->EnhanceComboBox(ui->spuAccuracyCUFLT, emu_settings_type::SPU_CUFLT_Accuracy);
 
 	m_emu_settings->EnhanceComboBox(ui->combo_num_ppu_threads, emu_settings_type::NumPPUThreads, true);
 	SubscribeTooltip(ui->gb_num_ppu_threads, tooltips.settings.num_ppu_threads);
