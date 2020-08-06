@@ -42,9 +42,7 @@ function(gen_git_version rpcs3_src_dir)
 	# BUILD_REPOSITORY_NAME will look like "RPCS3/rpcs3"
 	# BUILD_SOURCEBRANCHNAME will look like "master"
 	# See https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables
-	if (DEFINED ENV{BUILD_REPOSITORY_NAME} AND NOT "$ENV{BUILD_REPOSITORY_NAME}" STREQUAL "")
-		set(RPCS3_GIT_FULL_BRANCH "$ENV{BUILD_REPOSITORY_NAME}/$ENV{BUILD_SOURCEBRANCHNAME}")
-	endif()
+		set(RPCS3_GIT_BRANCH "$ENV{BUILD_REPOSITORY_NAME}/$ENV{BUILD_SOURCEBRANCHNAME}")
 
 	message(STATUS "RPCS3_GIT_VERSION: " ${RPCS3_GIT_VERSION})
 	message(STATUS "RPCS3_GIT_BRANCH: " ${RPCS3_GIT_BRANCH})
