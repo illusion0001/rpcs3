@@ -325,7 +325,7 @@ error_code cellVoiceGetPortAttr(u32 portId, u32 attr, vm::ptr<void> attrValue)
 
 error_code cellVoiceGetPortInfo(u32 portId, vm::ptr<CellVoiceBasePortInfo> pInfo)
 {
-	cellVoice.todo("cellVoiceGetPortInfo(portId=%d, pInfo=*0x%x)", portId, pInfo);
+	// cellVoice.todo("cellVoiceGetPortInfo(portId=%d, pInfo=*0x%x)", portId, pInfo);
 
 	auto& manager = g_fxo->get<voice_manager>();
 
