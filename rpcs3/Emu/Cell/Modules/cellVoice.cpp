@@ -48,7 +48,7 @@ void voice_manager::reset()
 
 error_code cellVoiceConnectIPortToOPort(u32 ips, u32 ops)
 {
-	cellVoice.todo("cellVoiceConnectIPortToOPort(ips=%d, ops=%d)", ips, ops);
+	// cellVoice.todo("cellVoiceConnectIPortToOPort(ips=%d, ops=%d)", ips, ops);
 
 	auto& manager = g_fxo->get<voice_manager>();
 
@@ -845,7 +845,7 @@ error_code cellVoiceWriteToIPortEx2(u32 ips, vm::cptr<void> data, vm::ptr<u32> s
 
 error_code cellVoiceReadFromOPort(u32 ops, vm::ptr<void> data, vm::ptr<u32> size)
 {
-	cellVoice.todo("cellVoiceReadFromOPort(ops=%d, data=*0x%x, size=*0x%x)", ops, data, size);
+	// cellVoice.todo("cellVoiceReadFromOPort(ops=%d, data=*0x%x, size=*0x%x)", ops, data, size);
 
 	auto& manager = g_fxo->get<voice_manager>();
 

@@ -748,7 +748,7 @@ error_code cellGemGetInertialState(u32 gem_num, u32 state_flag, u64 timestamp, v
 
 error_code cellGemGetInfo(vm::ptr<CellGemInfo> info)
 {
-	cellGem.warning("cellGemGetInfo(info=*0x%x)", info);
+	// cellGem.warning("cellGemGetInfo(info=*0x%x)", info);
 
 	auto& gem = g_fxo->get<gem_config>();
 
@@ -1040,7 +1040,7 @@ error_code cellGemInvalidateCalibration(s32 gem_num)
 
 s32 cellGemIsTrackableHue(u32 hue)
 {
-	cellGem.todo("cellGemIsTrackableHue(hue=%d)", hue);
+	// cellGem.todo("cellGemIsTrackableHue(hue=%d)", hue);
 
 	auto& gem = g_fxo->get<gem_config>();
 
@@ -1189,7 +1189,7 @@ error_code cellGemSetYaw()
 
 error_code cellGemTrackHues(vm::cptr<u32> req_hues, vm::ptr<u32> res_hues)
 {
-	cellGem.todo("cellGemTrackHues(req_hues=*0x%x, res_hues=*0x%x)", req_hues, res_hues);
+	// cellGem.todo("cellGemTrackHues(req_hues=*0x%x, res_hues=*0x%x)", req_hues, res_hues);
 
 	auto& gem = g_fxo->get<gem_config>();
 

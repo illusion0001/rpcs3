@@ -584,7 +584,7 @@ s32 cellCameraIsAvailable(s32 dev_num)
 
 s32 cellCameraIsAttached(s32 dev_num)
 {
-	cellCamera.warning("cellCameraIsAttached(dev_num=%d)", dev_num);
+	// cellCamera.warning("cellCameraIsAttached(dev_num=%d)", dev_num);
 
 	if (g_cfg.io.camera == camera_handler::null)
 	{
