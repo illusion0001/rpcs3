@@ -824,7 +824,7 @@ void ppu_module::analyse(u32 lib_toc, u32 entry, const u32 sec_end, const std::b
 				// TODO: invalid offsets, zero offsets (removed functions?)
 				if (addr % 4 || size % 4 || size > (end - start) || addr < start || addr + size > end)
 				{
-					if (addr) ppu_log.error(".eh_frame: Invalid function 0x%x", addr);
+					// if (addr) ppu_log.error(".eh_frame: Invalid function 0x%x", addr);
 					continue;
 				}
 
