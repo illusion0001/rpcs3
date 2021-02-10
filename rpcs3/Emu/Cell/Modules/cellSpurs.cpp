@@ -495,6 +495,8 @@ s32 cellSpursRunJobChain(ppu_thread& ppu, vm::ptr<CellSpursJobChain> jobChain);
 //s32 cellSpursJobHeaderSetJobbin2Param();
 //s32 cellSpursAddUrgentCommand();
 //s32 cellSpursAddUrgentCall();
+s32 cellSpursAddUrgentCommand(ppu_thread& ppu, vm::ptr<CellSpursJobChain> jobChain, u64 newCmd);
+s32 cellSpursAddUrgentCall(ppu_thread& ppu, vm::ptr<CellSpursJobChain> jobChain, vm::ptr<u64> commandList);
 
 //----------------------------------------------------------------------------
 // SPURS utility functions
@@ -5126,7 +5128,8 @@ s32 cellSpursAddUrgentCommand(ppu_thread& ppu, vm::ptr<CellSpursJobChain> jobCha
 
 	vm::reservation_op(ppu, vm::unsafe_ptr_cast<CellSpursJobChain_x00>(jobChain), [&](CellSpursJobChain_x00& jch)
 	{
-		for (auto& cmd : jch.urgentCmds)
+		// for (auto& cmd : jch.urgentCmds)
+		for (auto& cmd : reinterpret_cast<atomic_be_t<u64>(&)[2]>(jch.urgentCmds)) // from elad335
 		{
 			if (!cmd)
 			{
@@ -5353,8 +5356,10 @@ DECLARE(ppu_module_manager::cellSpurs)("cellSpurs", []()
 	REG_FUNC(cellSpurs, cellSpursJobHeaderSetJobbin2Param);
 
 	REG_FUNC(cellSpurs, cellSpursWakeUp);
-	REG_FUNC(cellSpurs, cellSpursAddUrgentCommand);
-	REG_FUNC(cellSpurs, cellSpursAddUrgentCall);
+	// REG_FUNC(cellSpurs, cellSpursAddUrgentCommand);
+	// REG_FUNC(cellSpurs, cellSpursAddUrgentCall);
+	REG_FUNC(cellSpurs, cellSpursAddUrgentCommand).flag(MFF_FORCED_HLE);
+	REG_FUNC(cellSpurs, cellSpursAddUrgentCall).flag(MFF_FORCED_HLE);
 
 	REG_FUNC(cellSpurs, cellSpursBarrierInitialize);
 	REG_FUNC(cellSpurs, cellSpursBarrierGetTasksetAddress);
