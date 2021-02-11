@@ -47,6 +47,7 @@ private Q_SLOTS:
 	void handle_item_selected(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 	void handle_item_changed(QTreeWidgetItem *item, int column);
 	void handle_custom_context_menu_requested(const QPoint& pos);
+	void handle_legacy_patches_enabled(int state);
 	void handle_show_owned_games_only(int state);
 
 private:
@@ -68,6 +69,7 @@ private:
 	bool m_show_owned_games_only = false;
 
 	patch_engine::patch_map m_map;
+	bool m_legacy_patches_enabled = false;
 
 	downloader* m_downloader = nullptr;
 
