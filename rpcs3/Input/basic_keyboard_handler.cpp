@@ -62,27 +62,13 @@ bool basic_keyboard_handler::eventFilter(QObject* watched, QEvent* event)
 	// !m_target->isVisible() is a hack since currently a guiless application will STILL inititialize a gsrender (providing a valid target)
 	if (!m_target || !m_target->isVisible() || watched == m_target)
 	{
-		switch (event->type())
-		{
-		case QEvent::KeyPress:
+		if (event->type() == QEvent::KeyPress)
 		{
 			keyPressEvent(static_cast<QKeyEvent*>(event));
-			break;
 		}
-		case QEvent::KeyRelease:
+		else if (event->type() == QEvent::KeyRelease)
 		{
 			keyReleaseEvent(static_cast<QKeyEvent*>(event));
-			break;
-		}
-		case QEvent::FocusOut:
-		{
-			ReleaseAllKeys();
-			break;
-		}
-		default:
-		{
-			break;
-		}
 		}
 	}
 	return false;
