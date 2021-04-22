@@ -2661,14 +2661,28 @@ void main_window::CreateFirmwareCache()
 
 void main_window::keyPressEvent(QKeyEvent *keyEvent)
 {
-	if (keyEvent->isAutoRepeat())
-	{
-		return;
-	}
-
 	if (((keyEvent->modifiers() & Qt::AltModifier) && keyEvent->key() == Qt::Key_Return) || (isFullScreen() && keyEvent->key() == Qt::Key_Escape))
 	{
 		ui->toolbar_fullscreen->trigger();
+	}
+
+	if (keyEvent->modifiers() & Qt::ControlModifier)
+	{
+		switch (keyEvent->key())
+		{
+		case Qt::Key_E:
+		{
+			switch (Emu.GetStatus())
+			{
+			case system_state::paused: Emu.Resume(); return;
+			case system_state::ready: Emu.Run(true); return;
+			default: return;
+			}
+		}
+		case Qt::Key_P: if (Emu.IsRunning()) Emu.Pause(); return;
+		case Qt::Key_S: if (!Emu.IsStopped()) Emu.Stop(); return;
+		case Qt::Key_R: if (!Emu.GetBoot().empty()) Emu.Restart(); return;
+		}
 	}
 }
 
