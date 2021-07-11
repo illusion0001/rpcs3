@@ -1836,6 +1836,9 @@ settings_dialog::settings_dialog(std::shared_ptr<gui_settings> gui_settings, std
 	m_emu_settings->EnhanceCheckBox(ui->ppuLlvmJavaModeHandling, emu_settings_type::PPULLVMJavaModeHandling);
 	SubscribeTooltip(ui->ppuLlvmJavaModeHandling, tooltips.settings.ppu_llvm_java_mode_handling);
 
+	m_emu_settings->EnhanceCheckBox(ui->gta4ApproxFM, emu_settings_type::Gta4ApproxFM);
+	SubscribeTooltip(ui->gta4ApproxFM, tooltips.settings.gta4_approx_fm);
+
 	// Comboboxes
 	m_emu_settings->EnhanceComboBox(ui->combo_accurate_ppu_128, emu_settings_type::AccuratePPU128Loop, true);
 	SubscribeTooltip(ui->gb_accurate_ppu_128, tooltips.settings.accurate_ppu_128_loop);

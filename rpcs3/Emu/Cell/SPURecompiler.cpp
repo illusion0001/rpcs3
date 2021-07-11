@@ -7813,7 +7813,7 @@ public:
 	{
 		if (g_cfg.core.spu_accurate_xfloat || g_cfg.core.spu_fm_accuracy == spu_instruction_accuracy::accurate)
 			set_vr(op.rt, get_vr<f64[4]>(op.ra) * get_vr<f64[4]>(op.rb));
-		else if (g_cfg.core.spu_approx_xfloat || g_cfg.core.spu_fm_accuracy == spu_instruction_accuracy::approximate)
+		else if (g_cfg.core.spu_approx_xfloat || g_cfg.core.spu_fm_accuracy == spu_instruction_accuracy::approximate || g_cfg.core.spu_gta4_FM)
 		{
 			const auto a = get_vr<f32[4]>(op.ra);
 			const auto b = get_vr<f32[4]>(op.rb);
@@ -7821,6 +7821,14 @@ public:
 			if (op.ra == op.rb && !m_interp_magn)
 			{
 				set_vr(op.rt, fm(a, b));
+				return;
+			}
+
+			if (g_cfg.core.spu_gta4_FM)
+			{
+				const auto ca = eval(clamp_smax(a));
+				const auto cb = eval(clamp_smax(b));
+				set_vr(op.rt, fm(ca, cb));
 				return;
 			}
 

@@ -105,6 +105,7 @@ public:
 		const QString enable_performance_report    = tr("Measure certain events and print a chart after the emulator is stopped. Don't enable if not asked to.");
 		const QString num_ppu_threads              = tr("Affects maximum amount of PPU threads running concurrently, the value of 1 has very low compatibility with games.\n2 is the default, if unsure do not modify this setting.");
 		const QString ppu_llvm_java_mode_handling  = tr("Respect current Java Mode for alti-vec ops by PPU LLVM.\nIf unsure do not modify this setting.");
+		const QString gta4_approx_fm               = tr("Fixes falling through the ground in GTA IV without using Accurate Xfloat, may also help other games.\nDo not enable for Red Dead Redemption. If unsure, leave unchecked.");
 
 		// emulator
 

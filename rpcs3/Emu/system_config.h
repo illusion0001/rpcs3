@@ -76,6 +76,7 @@ struct cfg_root : cfg::node
 		cfg::_enum<spu_instruction_accuracy> spu_cfltu_accuracy{this, "CFLTU accuracy", spu_instruction_accuracy::Default};
 		cfg::_enum<spu_instruction_accuracy> spu_csflt_accuracy{this, "CSFLT accuracy", spu_instruction_accuracy::Default};
 		cfg::_enum<spu_instruction_accuracy> spu_cuflt_accuracy{this, "CUFLT accuracy", spu_instruction_accuracy::Default};
+		cfg::_bool spu_gta4_FM{this, "GTAIV FM", false};
 		cfg::_bool debug_console_mode{ this, "Debug Console Mode", false }; // Debug console emulation, not recommended
 		cfg::_bool hook_functions{ this, "Hook static functions" };
 		cfg::set_entry libraries_control{ this, "Libraries Control" }; // Override HLE/LLE behaviour of selected libs

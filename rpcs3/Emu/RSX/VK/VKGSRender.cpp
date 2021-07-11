@@ -42,13 +42,25 @@ namespace vk
 			return std::make_pair(VK_FORMAT_B8G8R8A8_UNORM, vk::default_component_map);
 
 		case rsx::surface_color_format::a8b8g8r8:
+		{
+			if (g_cfg.core.spu_gta4_FM)
+				return std::make_pair(VK_FORMAT_R8G8B8A8_UNORM, vk::default_component_map);
 			return std::make_pair(VK_FORMAT_B8G8R8A8_UNORM, abgr);
+		}
 
 		case rsx::surface_color_format::x8b8g8r8_o8b8g8r8:
+		{
+			if (g_cfg.core.spu_gta4_FM)
+				return std::make_pair(VK_FORMAT_R8G8B8A8_UNORM, o_rgb);
 			return std::make_pair(VK_FORMAT_B8G8R8A8_UNORM, o_bgr);
+		}
 
 		case rsx::surface_color_format::x8b8g8r8_z8b8g8r8:
+		{
+			if (g_cfg.core.spu_gta4_FM)
+				return std::make_pair(VK_FORMAT_R8G8B8A8_UNORM, z_rgb);
 			return std::make_pair(VK_FORMAT_B8G8R8A8_UNORM, z_bgr);
+		}
 
 		case rsx::surface_color_format::x8r8g8b8_z8r8g8b8:
 			return std::make_pair(VK_FORMAT_B8G8R8A8_UNORM, z_rgb);

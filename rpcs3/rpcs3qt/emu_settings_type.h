@@ -43,6 +43,7 @@ enum class emu_settings_type
 	PerformanceReport,
 	FullWidthAVX512,
 	PPULLVMJavaModeHandling,
+	Gta4ApproxFM,
 
 	// SPU instructions
 	SPU_FCGT_Accuracy,
@@ -224,6 +225,7 @@ inline static const QMap<emu_settings_type, cfg_location> settings_location =
 	{ emu_settings_type::FullWidthAVX512,          { "Core", "Full Width AVX-512"}},
 	{ emu_settings_type::NumPPUThreads,            { "Core", "PPU Threads"}},
 	{ emu_settings_type::PPULLVMJavaModeHandling,  { "Core", "PPU LLVM Java Mode Handling"}},
+	{ emu_settings_type::Gta4ApproxFM,             { "Core", "GTAIV FM"}},
 
 		// SPU instructions accuracy
 		{ emu_settings_type::SPU_FCGT_Accuracy,		   { "Core", "FCGT accuracy"}},
