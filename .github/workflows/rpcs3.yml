@@ -20,6 +20,7 @@ concurrency:
 env:
   BUILD_REPOSITORY_NAME: ${{ github.repository }}
   BUILD_SOURCEBRANCHNAME: ${{ github.ref_name }}
+  BUILD_ARTIFACTSTAGINGDIRECTORY: ${{ github.workspace }}/build
 
 jobs:
   Linux_Build:
@@ -82,7 +83,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: RPCS3 for Linux (${{ runner.arch }}, ${{ matrix.compiler }})
-          path: ${{ github.workspace }}/build/*.AppImage
+          path: ${{ env.BUILD_ARTIFACTSTAGINGDIRECTORY }}/*.AppImage
           compression-level: 0
 
   Windows_Build:
@@ -96,7 +97,6 @@ jobs:
       VULKAN_VER: '1.3.268.0'
       VULKAN_SDK_SHA: '8459ef49bd06b697115ddd3d97c9aec729e849cd775f5be70897718a9b3b9db5'
       CACHE_DIR: ./cache
-      BUILD_ARTIFACTSTAGINGDIRECTORY: ${{ github.workspace }}\build
     steps:
 
       - name: Checkout repository
@@ -147,7 +147,7 @@ jobs:
       - name: Pack up build artifacts
         shell: bash
         run: |
-          mkdir -p build
+          mkdir -p ${{ env.BUILD_ARTIFACTSTAGINGDIRECTORY }}
           .ci/deploy-windows.sh
 
       - name: Upload artifacts (7z)
@@ -157,7 +157,7 @@ jobs:
           # 7z
           # 7z.sha256
           path: |
-            build/${{ env.BUILD }}
-            build/${{ env.BUILD }}.sha256
+            ${{ env.BUILD_ARTIFACTSTAGINGDIRECTORY }}/${{ env.BUILD }}
+            ${{ env.BUILD_ARTIFACTSTAGINGDIRECTORY }}/${{ env.BUILD }}.sha256
           compression-level: 0
           if-no-files-found: error
