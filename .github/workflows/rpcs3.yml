@@ -66,14 +66,14 @@ jobs:
 
       - name: Docker setup and build
         run: |
-          docker pull --quiet ${{ matrix.cfg.docker_img }}
+          docker pull --quiet ${{ matrix.docker_img }}
           docker run                      \
             -v $PWD:/rpcs3              \
             --env-file .ci/docker.env \
             -v ${{ env.CCACHE_DIR }}:/root/.ccache  \
             -v ${{ github.workspace }}/artifacts:/root/artifacts \
-            ${{ matrix.cfg.docker_img }} \
-            ${{ matrix.cfg.build_sh }}
+            ${{ matrix.docker_img }} \
+            ${{ matrix.build_sh }}
 
       - name: Upload artifacts
         if: |
