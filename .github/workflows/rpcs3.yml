@@ -74,6 +74,11 @@ jobs:
             ${{ matrix.cfg.build_sh }}
 
       - name: Upload artifacts
+        if: |
+          github.event_name != 'pull_request' &&
+          github.repository == 'RPCS3/rpcs3' &&
+          github.ref == 'refs/heads/master' &&
+          matrix.compiler == 'clang'
         uses: actions/upload-artifact@main
         with:
           name: RPCS3 for Linux (${{ runner.arch }}, ${{ matrix.compiler }})
