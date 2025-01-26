@@ -144,20 +144,11 @@ jobs:
         run: |
           mkdir -p build
           .ci/deploy-windows.sh
-          mkdir -p bin2/${{ env.BUILD_RAW }}
-          mv bin/* bin2/${{ env.BUILD_RAW }}
-
-      - name: Upload artifacts (zip)
-        uses: actions/upload-artifact@main
-        with:
-          name: RPCS3 for Windows (MSVC) (zip)
-          path: bin2
-          if-no-files-found: error
 
       - name: Upload artifacts (7z)
         uses: actions/upload-artifact@main
         with:
-          name: RPCS3 for Windows (MSVC) (7z)
+          name: RPCS3 for Windows (MSVC)
           # 7z
           # 7z.sha256
           path: |
