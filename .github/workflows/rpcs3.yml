@@ -76,11 +76,12 @@ jobs:
             ${{ matrix.build_sh }}
 
       - name: Upload artifacts
-        if: |
-          github.event_name != 'pull_request' &&
-          github.repository == 'RPCS3/rpcs3' &&
-          github.ref == 'refs/heads/master' &&
-          matrix.compiler == 'clang'
+        #condition for release
+        #if: |
+        #  github.event_name != 'pull_request' &&
+        #  github.repository == 'RPCS3/rpcs3' &&
+        #  github.ref == 'refs/heads/master' &&
+        #  matrix.compiler == 'clang'
         uses: actions/upload-artifact@main
         with:
           name: RPCS3 for Linux (${{ runner.arch }}, ${{ matrix.compiler }})
@@ -153,6 +154,11 @@ jobs:
 
       # TODO: Upload artifact to release repository
       - name: Upload artifacts (7z)
+        #condition for release
+        #if: |
+        #  github.event_name != 'pull_request' &&
+        #  github.repository == 'RPCS3/rpcs3' &&
+        #  github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@main
         with:
           name: RPCS3 for Windows (MSVC)
