@@ -41,7 +41,7 @@ jobs:
       DEPLOY_APPIMAGE: true
       APPDIR: "/rpcs3/build/appdir"
       ARTDIR: "/root/artifacts"
-      RELEASE_MESSAGE: "/rpcs3/GitHubReleaseMessage-${{ matrix.compiler }}.txt"
+      RELEASE_MESSAGE: "/rpcs3/GitHubReleaseMessage.txt"
       COMPILER: ${{ matrix.compiler }}
 
     steps:
