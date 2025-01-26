@@ -47,7 +47,6 @@ jobs:
       DEPLOY_APPIMAGE: true
       APPDIR: "/rpcs3/build/appdir"
       ARTDIR: "/root/artifacts"
-      # TODO: Upload artifact to release repository
       RELEASE_MESSAGE: "/rpcs3/GitHubReleaseMessage.txt"
       COMPILER: ${{ matrix.compiler }}
 
@@ -76,6 +75,7 @@ jobs:
             ${{ matrix.build_sh }}
 
       - name: Upload artifacts
+        #TODO: Upload artifact to release repository
         #condition for release
         #if: |
         #  github.event_name != 'pull_request' &&
@@ -152,8 +152,8 @@ jobs:
           mkdir -p ${{ env.BUILD_ARTIFACTSTAGINGDIRECTORY }}
           .ci/deploy-windows.sh
 
-      # TODO: Upload artifact to release repository
       - name: Upload artifacts (7z)
+        #TODO: Upload artifact to release repository
         #condition for release
         #if: |
         #  github.event_name != 'pull_request' &&
