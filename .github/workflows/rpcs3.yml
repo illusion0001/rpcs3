@@ -47,6 +47,7 @@ jobs:
       DEPLOY_APPIMAGE: true
       APPDIR: "/rpcs3/build/appdir"
       ARTDIR: "/root/artifacts"
+      # TODO: Upload artifact to release repository
       RELEASE_MESSAGE: "/rpcs3/GitHubReleaseMessage.txt"
       COMPILER: ${{ matrix.compiler }}
 
@@ -62,11 +63,6 @@ jobs:
         with:
           path: ${{ env.CCACHE_DIR }}
           key: ${{ runner.os }}-ccache-${{ matrix.compiler }}
-
-      - name: Append Compiler version to appimage
-        run: |
-          file=".ci/deploy-linux.sh"
-          sed -i 's/RPCS3_APPIMAGE="rpcs3-v${COMM_TAG}-${COMM_COUNT}-${COMM_HASH}_linux64.AppImage"/RPCS3_APPIMAGE="rpcs3-v${COMM_TAG}-${COMM_COUNT}-${COMM_HASH}-${COMPILER}_linux64.AppImage"/g' $file
 
       - name: Docker setup and build
         run: |
@@ -155,6 +151,7 @@ jobs:
           mkdir -p ${{ env.BUILD_ARTIFACTSTAGINGDIRECTORY }}
           .ci/deploy-windows.sh
 
+      # TODO: Upload artifact to release repository
       - name: Upload artifacts (7z)
         uses: actions/upload-artifact@main
         with:
