@@ -41,7 +41,7 @@ jobs:
                 - os: ubuntu-24.04
                   docker_img: "rpcs3/rpcs3-ci-focal:1.9"
                   build_sh: "/rpcs3/.ci/build-linux.sh"
-    runs-on: ${{ matrix.cfg.os }}
+    runs-on: ${{ matrix.compiler.cfg.os }}
     env:
       CCACHE_DIR: ${{ github.workspace }}/ccache
       CI_HAS_ARTIFACTS: true
